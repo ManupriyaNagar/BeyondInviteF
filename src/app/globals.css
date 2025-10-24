@@ -4,13 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /* src/app/globals.css or src/styles/globals.css */
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE, Edge */
-  scrollbar-width: none;     /* Firefox */
+@layer utilities {
+  .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+  .no-scrollbar::-webkit-scrollbar { width:0; height:0; }
 }
 
 @theme inline {
@@ -127,4 +123,19 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+
+/* Hide scrollbars globally */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+  overflow: -moz-scrollbars-none; /* extra fallback */
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
 }

@@ -13,7 +13,6 @@ const categories = [
   "Home Decor",
   "Fashion",
   "Books",
-  
 ];
 
 const Categories = () => {

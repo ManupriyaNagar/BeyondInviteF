@@ -57,7 +57,7 @@ export default function Phone() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={handleMusicPlay}
-                className="absolute bottom-30 right-20 bg-gradient-to-r from-[#dca751] to-[#c7944c] text-white px-6 py-3 rounded-full shadow-xl font-semibold text-lg font-['Noto_Serif_Display']"
+                className="absolute bottom-40 right-90 bg-gradient-to-r from-[#dca751] to-[#c7944c] text-white px-2 py-2 rounded-full shadow-xl font-semibold text-lg font-['Noto_Serif_Display']"
             >
                 {isPlaying ? "Playing..." : "Play Music"}
             </motion.button>

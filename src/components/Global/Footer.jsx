@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="bg-white text-gray-700 border-t border-gray-200">
       {/* Top Newsletter Section */}
-      <div className="bg-gray-100 py-6 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-gray-100 py-6 px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-center md:text-left text-sm font-medium">
           Subscribe to receive promotional updates and exclusive offers via email and SMS
         </p>
@@ -99,7 +99,7 @@ const Footer = () => {
 
       {/* Bottom Section */}
       <div className="border-t border-gray-200 py-4 px-6 md:px-20 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} Minted, Inc. All rights reserved.
+        © {new Date().getFullYear()} Beyond Invite , Inc. All rights reserved.
       </div>
     </footer>
   );

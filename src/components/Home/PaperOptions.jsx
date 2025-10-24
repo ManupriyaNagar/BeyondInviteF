@@ -4,53 +4,64 @@ import React from "react";
 const paperOptions = [
   {
     id: 1,
-    title: "Paper Bar",
+    title: "Wedding Invitations",
     description:
       "Choose from our extensive selection of paper items curated to compliment all of your stationery.",
     image:
-      "https://www.papersource.com/cdn/shop/files/2024-07-square-tall-wedding-fine-paper_58a2d17d-9934-49a8-9ca4-ef3ab4798eac.jpg?v=1737586128&width=500", // replace with real image
-    link: "#",
+      "/invitation.jpeg", // replace with real image
+    link: "/wedding",
   },
   {
     id: 2,
-    title: "Fine Paper",
+    title: "Baby Shower",
     description:
       "Our selection of handmade and fine papers can be used to add impressive embellishments to your suite.",
     image:
-      "https://www.papersource.com/cdn/shop/files/2024-07-square-tall-wedding-paper-bar.jpg?v=1737586047&width=500", // replace with real image
-    link: "#",
+      "/baby-shower.jpeg", // replace with real image
+    link: "/babyshower",
   },
   {
     id: 3,
-    title: "Custom Addressing",
+    title: "E-Invitations",
     description:
       "Deliver your wedding stationery in style with personalized address labels, custom stamps and embossers.",
     image:
-      "https://www.papersource.com/cdn/shop/files/2024-07-square-tall-wedding-custom-addressing.jpg?v=1737586033&width=500", // replace with real image
+      "/e-invitation.jpeg", // replace with real image
     link: "#",
   },
   {
     id: 4,
-    title: "Wedding Events",
+    title: "Personalised Invitations",
     description:
       "From bridal showers to engagement parties, make every wedding event shine with the perfect invitation.",
     image:
-      "https://www.papersource.com/cdn/shop/files/2024-07-square-tall-wedding-events.jpg?v=1737586033&width=500", // replace with real image
-    link: "#",
+      "/personalized.jpeg", // replace with real image
+    link: "/personalized",
   },
+    {
+    id: 5,
+    title: "Corporate Invitations",
+    description:
+      "Choose from our extensive selection of paper items curated to compliment all of your stationery.",
+    image:
+      "/corporate.jpeg", // replace with real image
+    link: "/corporate",
+  },
+
 ];
 
 export default function PaperSource() {
   return (
     <section className="w-full py-12  bg-[#fdf7f7]">
+     
         <div className="container mx-auto">
       {/* Title */}
       <h2 className="text-center text-2xl md:text-3xl font-serif text-gray-700 mb-10">
-        Choosing Paper Source
+       Explore Invitations by Category
       </h2>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 container mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 container mx-auto">
         {paperOptions.map((item) => (
           <div
             key={item.id}

@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import Image from "next/image";
+
 
 export default function VirtualConsultations() {
   return (
     <section className="w-full bg-white">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-8 px-6 py-16">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center  px-6 py-16">
         
         {/* Left image */}
         <div className="flex justify-center">
@@ -14,12 +14,11 @@ export default function VirtualConsultations() {
             alt="Virtual Consultation"
             width={600}
             height={400}
-            className="rounded-lg shadow-md"
+            className=" shadow-md"
           />
         </div>
 
-        {/* Right content */}
-        <div className="text-center md:text-left">
+        <div className="text-center md:text-left p-4">
           <h2 className="text-3xl font-serif italic text-gray-700 mb-4">
             Free Virtual Consultations
           </h2>
@@ -36,14 +35,18 @@ export default function VirtualConsultations() {
             <li>✔ Order from collections exclusively offered through our consultants</li>
           </ul>
 
-          <button className="border border-yellow-400 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-yellow-50 transition">
+        
+          <a
+            href="https://wa.me/+919910265165"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block mt-4 text-green-600 underline text-sm"
+          >
+            <button className="border border-yellow-400 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-yellow-50 transition">
             SCHEDULE AN APPOINTMENT
           </button>
+          </a>
         </div>
-      </div>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-8 px-6 py-16">
-        
-        {/* Left image */}
           <div className="text-center md:text-left">
           <h2 className="text-3xl font-serif italic text-gray-700 mb-4">
             Free Virtual Consultations
@@ -61,9 +64,16 @@ export default function VirtualConsultations() {
             <li>✔ Order from collections exclusively offered through our consultants</li>
           </ul>
 
-          <button className="border border-yellow-400 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-yellow-50 transition">
+           <a
+            href="https://wa.me/+919910265165"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block mt-4 text-green-600 underline text-sm"
+          >
+            <button className="border border-yellow-400 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-yellow-50 transition">
             SCHEDULE AN APPOINTMENT
           </button>
+          </a>
         </div>
         <div className="flex justify-center">
           <img
@@ -71,7 +81,7 @@ export default function VirtualConsultations() {
             alt="Virtual Consultation"
             width={600}
             height={400}
-            className="rounded-lg shadow-md"
+            className=" shadow-md"
           />
         </div>
 

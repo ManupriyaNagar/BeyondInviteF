@@ -1,40 +1,28 @@
 "use client";
 import React from "react";
 
-const items = [
-  "Save the Dates",
-  "Greeting Cards",
-  "Wedding Announcements",
-  "Wedding Stationery",
-  "Menus",
-  "Programs",
-  "Custom Stamps",
-  "Custom Embossers",
-];
-
-export default function WeddingStationery() {
+const PromoBanner = () => {
   return (
-    <section className="w-full py-12  bg-white">
-      {/* Heading with dividers */}
-      <div className="container mx-auto flex items-center justify-center mb-10">
-        <div className="flex-grow border-t border-gray-200"></div>
-        <h2 className="px-6 text-2xl md:text-3xl font-serif italic text-gray-700 whitespace-nowrap">
-          Wedding Celebrations & Stationery
-        </h2>
-        <div className="flex-grow border-t border-gray-200"></div>
-      </div>
+    <div className="w-full bg-[#38514d] text-white py-6 px-4">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+        {/* Left Text */}
+        <p className="text-lg md:text-xl font-semibold tracking-wide">
+          20% SAVINGS + FREE SHIPPING, EVERY DAY
+        </p>
 
-      {/* Grid of buttons */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
-        {items.map((item, idx) => (
-          <button
-            key={idx}
-            className="border border-yellow-300 text-gray-700 py-3 px-4 text-sm font-medium hover:bg-yellow-50 transition"
-          >
-            {item}
+        {/* Divider */}
+        <div className="hidden md:block h-8 border-l border-white mx-6"></div>
+
+        {/* Right Section */}
+        <div className="flex flex-col md:flex-row items-center gap-4 mt-4 md:mt-0">
+          <span className="text-xl font-medium">Beyond Invite<span className="font-light">more.</span></span>
+          <button className="bg-white text-[#446B66] px-5 py-2 rounded-md font-semibold hover:bg-gray-100 transition">
+            JOIN NOW
           </button>
-        ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default PromoBanner;
