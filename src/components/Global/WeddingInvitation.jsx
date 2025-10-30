@@ -9,7 +9,7 @@ const invitations = [
     designer: "Oscar de la Renta",
     price: "₹275 Each",
     image:
-      "https://www.papersource.com/cdn/shop/files/622455283.jpg?v=1750369069&width=800", // replace with actual
+      "https://www.papersource.com/cdn/shop/files/622455283.jpg?v=1750369069&width=800",
   },
   {
     id: 2,
@@ -47,64 +47,63 @@ export default function WeddingInvitations() {
   };
 
   return (
-    <section className="w-full py-12  border-t border-gray-100">
+    <section className="w-full py-12 border-t border-gray-100 bg-white">
       <h2 className="text-center text-2xl md:text-3xl font-serif text-gray-700 mb-10">
         Top Wedding Invitations
       </h2>
-      <div className="w-screen flex justify-center">
-  <div className="flex gap-6  scrollbar-hide px-6">
-    {invitations.map((item) => (
-      <div
-        key={item.id}
-        className="relative bg-white shadow-sm rounded-md flex-shrink-0 w-72"
-      >
-        {/* Image */}
-        <img
-          src={item.image}
-          alt={item.title}
-          className="w-full h-[320px] object-cover rounded-md mb-4"
-        />
 
-        {/* Favorite Heart */}
-        <button
-          onClick={() => toggleFavorite(item.id)}
-          className="absolute top-4 right-4 text-gray-500"
-        >
-          <Heart
-            className={`w-6 h-6 ${
-              favorites.includes(item.id)
-                ? "fill-red-500 text-red-500"
-                : "hover:text-red-400"
-            }`}
-          />
-        </button>
+      {/* Scrollable Cards */}
+      <div className="w-full overflow-x-auto scrollbar-hide">
+        <div className="flex gap-5 px-5 sm:px-8 md:justify-center">
+          {invitations.map((item) => (
+            <div
+              key={item.id}
+              className="relative bg-white border border-gray-100 shadow-sm rounded-lg flex-shrink-0 w-60 sm:w-64 md:w-72 transition-transform hover:-translate-y-1"
+            >
+              {/* Image */}
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-56 sm:h-60 md:h-72 object-cover rounded-t-lg"
+              />
 
-        {/* Text */}
-        <div className="border-t border-gray-100 pt-3">
-          <h3 className="font-semibold text-gray-800 truncate">
-            {item.title}
-          </h3>
-          <p className="text-sm text-gray-500">{item.designer}</p>
-          <p className="text-sm text-gray-700">{item.price}</p>
+              {/* Favorite Heart */}
+              <button
+                onClick={() => toggleFavorite(item.id)}
+                className="absolute top-3 right-3 text-gray-500"
+              >
+                <Heart
+                  className={`w-6 h-6 ${
+                    favorites.includes(item.id)
+                      ? "fill-red-500 text-red-500"
+                      : "hover:text-red-400"
+                  }`}
+                />
+              </button>
+
+              {/* Details */}
+              <div className="p-3 sm:p-4 text-center">
+                <h3 className="font-medium text-gray-800 text-sm sm:text-base truncate">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-500">
+                  {item.designer}
+                </p>
+                <p className="text-xs sm:text-sm text-gray-700 font-semibold">
+                  {item.price}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    ))}
-  </div>
-</div>
-
-
-
 
       {/* Button */}
-      <div className="flex justify-center mt-10">
-        <button className="bg-[#c7944c] text-white px-6 py-3 rounded-md shadow-sm hover:bg-[#c7944c] transition">
+      <div className="flex justify-center mt-10 px-4">
+        <button className="bg-[#c7944c] text-white text-sm sm:text-base px-6 py-3 rounded-md shadow-sm hover:bg-[#b5833d] transition">
           SHOP THE COLLECTION
         </button>
       </div>
-
-      {/* <div className="mt-10">
-        <img src="/banner.png" alt="" />
-      </div> */}
     </section>
   );
 }

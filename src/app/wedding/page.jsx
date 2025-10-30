@@ -17,6 +17,7 @@ export default function WeddingInvitations() {
   const [selectedFilter, setSelectedFilter] = useState("");
   const [invitations, setInvitations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showThemes, setShowThemes] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -43,7 +44,6 @@ export default function WeddingInvitations() {
     fetchInvitations();
   }, []);
 
-
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-gray-600">
@@ -55,12 +55,12 @@ export default function WeddingInvitations() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <div className="bg-green-50 py-12 border-b sticky top-0 h-fit self-start z-10">
+      <div className="bg-green-50 py-10 px-4 border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3">
             Wedding Invitations
           </h1>
-          <p className="text-gray-600 max-w-3xl">
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
             Customize online wedding invitations from top designers. Make a
             custom URL, add Photo Gallery and Registry Blocks, and track RSVPs.
           </p>
@@ -68,72 +68,118 @@ export default function WeddingInvitations() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Sidebar */}
-         <aside className="hidden md:block sticky top-54 h-fit self-start">
-    <h3 className="text-lg font-semibold mb-3">Wedding invitations</h3>
-    <ul className="space-y-2 text-gray-600">
-      <li>Elegant and formal</li>
-      <li>Modern</li>
-      <li>Simple and minimal</li>
-      <li>Rustic</li>
-      <li>Boho</li>
-      <li>Watercolor</li>
-      <li>Romantic</li>
-      <li>Calligraphy</li>
-      <li>Vintage and retro</li>
-    </ul>
-  </aside>
+      <div className="max-w-7xl mx-auto py-8 px-4 grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* Sidebar for Desktop */}
+        <aside className="hidden md:block sticky top-64 h-fit self-start">
+          <h3 className="text-lg font-semibold mb-3">Wedding Themes</h3>
+          <ul className="space-y-2 text-gray-600">
+            <li>Elegant and formal</li>
+            <li>Modern</li>
+            <li>Simple and minimal</li>
+            <li>Rustic</li>
+            <li>Boho</li>
+            <li>Watercolor</li>
+            <li>Romantic</li>
+            <li>Calligraphy</li>
+            <li>Vintage and retro</li>
+          </ul>
+        </aside>
 
         {/* Main Section */}
         <main className="md:col-span-3">
-          {/* Filter Bar */}
-          <div className="bg-white sticky top-49 h-fit self-start z-10">
-          <div className="flex flex-wrap gap-3 mb-8 p-4">
-            {filters.map((filter, idx) => (
-              <button
-                key={idx}
-                onClick={() => setSelectedFilter(filter.name)}
-                className={`px-4 py-2 text-sm border rounded-md ${selectedFilter === filter.name
-                    ? "bg-gray-200"
-                    : "bg-white hover:bg-gray-50"
-                  }`}
-              >
-                {filter.name}
-              </button>
-            ))}
+          {/* Mobile Dropdown for Themes */}
+          <div className="md:hidden mb-6">
+            <button
+              onClick={() => setShowThemes(!showThemes)}
+              className="w-full bg-green-100 border border-green-300 text-green-800 px-4 py-2 rounded-md font-medium flex justify-between items-center"
+            >
+              Wedding Themes
+              <span className="text-lg">{showThemes ? "−" : "+"}</span>
+            </button>
+
+            {showThemes && (
+              <ul className="mt-3 bg-green-50 border border-green-200 rounded-md p-3 text-gray-700 space-y-2 text-sm">
+                <li>Elegant and formal</li>
+                <li>Modern</li>
+                <li>Simple and minimal</li>
+                <li>Rustic</li>
+                <li>Boho</li>
+                <li>Watercolor</li>
+                <li>Romantic</li>
+                <li>Calligraphy</li>
+                <li>Vintage and retro</li>
+              </ul>
+            )}
           </div>
+
+          {/* Filter Bar */}
+          <div className="bg-white sticky top-[70px]  py-2 overflow-x-auto scrollbar-hide">
+            <div className="flex gap-2 sm:gap-3 px-1 min-w-max md:min-w-0">
+              {filters.map((filter, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedFilter(filter.name)}
+                  className={`px-3 py-2 text-sm border rounded-md whitespace-nowrap transition-all ${
+                    selectedFilter === filter.name
+                      ? "bg-green-100 border-green-400 text-green-700"
+                      : "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  {filter.name}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {invitations.map((card) => (
-              <div
-                key={card.id}
-                onClick={() => router.push(`/template/${card.id}`)}
-                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer group"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={card.image_url || "/fallback.jpg"}
-                    alt={card.title}
-                    className="w-full h-96 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
-                    <button className="bg-white text-gray-800 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium">
-                      View Details
-                    </button>
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-6">
+            {invitations.length > 0 ? (
+              invitations.map((card) => (
+                <div
+                  key={card.id}
+                  onClick={() => router.push(`/template/${card.id}`)}
+                  className="border rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition cursor-pointer group"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={
+                        card.image_url?.startsWith("http")
+                          ? card.image_url
+                          : `http://localhost:5001/${card.image_url}`
+                      }
+                      alt={card.title}
+                      className="w-full h-44 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300">
+                      <button className="bg-white text-gray-800 px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm sm:text-base font-medium">
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                  <div className="p-3 sm:p-4">
+                    <h4 className="text-gray-800 text-sm sm:text-base font-medium group-hover:text-green-600 transition-colors">
+                      {card.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                      Wedding Invitation
+                    </p>
+                    <div className="flex items-center justify-between mt-2 sm:mt-3">
+                      <span className="text-green-600 font-semibold text-sm sm:text-lg">
+                        ₹{card.price || 199}
+                      </span>
+                      <span className="text-xs sm:text-sm text-gray-500">
+                        Customize
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p className="text-gray-600 mt-10 text-center col-span-full">
+                No invitations found.
+              </p>
+            )}
           </div>
-
-          {invitations.length === 0 && (
-            <p className="text-gray-600 mt-10 text-center">
-              No invitations found.
-            </p>
-          )}
         </main>
       </div>
     </div>

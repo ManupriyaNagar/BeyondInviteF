@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 
 const filters = [
   { name: "Most Popular" },
@@ -66,7 +65,7 @@ const invitations = [
     title: "Custom Artwork Design",
     image:
       "https://i.pinimg.com/1200x/06/e1/f8/06e1f828e2e6d5885bcfe1e7fb5061a7.jpg",
-  }
+  },
 ];
 
 export default function PersonalizedInvitations() {
@@ -75,12 +74,12 @@ export default function PersonalizedInvitations() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <div className="bg-indigo-50 py-12 border-b sticky top-0 h-fit z-10">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4">
+      <div className="bg-indigo-50 py-10 px-4 border-b sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto text-center md:text-left">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             Personalized Invitations
           </h1>
-          <p className="text-gray-600 max-w-3xl">
+          <p className="text-gray-600 max-w-3xl mx-auto md:mx-0 text-sm md:text-base leading-relaxed">
             Create a one-of-a-kind invitation that reflects your unique style.
             Personalize with names, photos, colors, and fonts. Perfect for
             birthdays, anniversaries, weddings, and any celebration where you
@@ -89,12 +88,12 @@ export default function PersonalizedInvitations() {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+      {/* Content Layout */}
+      <div className="max-w-7xl mx-auto py-10 px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Sidebar */}
-          <aside className="hidden md:block sticky top-64 h-fit self-start">
+        <aside className="hidden md:block sticky top-64 h-fit self-start">
           <h3 className="text-lg font-semibold mb-3">Personalized Styles</h3>
-          <ul className="space-y-2 text-gray-600">
+          <ul className="space-y-2 text-gray-600 text-sm">
             <li>Photo Collage</li>
             <li>Monogram</li>
             <li>Handwritten</li>
@@ -105,7 +104,7 @@ export default function PersonalizedInvitations() {
           </ul>
 
           <h3 className="text-lg font-semibold mt-8 mb-3">Shop by Occasion</h3>
-          <ul className="space-y-2 text-gray-600">
+          <ul className="space-y-2 text-gray-600 text-sm">
             <li>Birthdays</li>
             <li>Weddings</li>
             <li>Anniversaries</li>
@@ -114,7 +113,7 @@ export default function PersonalizedInvitations() {
           </ul>
 
           <h3 className="text-lg font-semibold mt-8 mb-3">Shop by Color</h3>
-          <ul className="space-y-2 text-gray-600">
+          <ul className="space-y-2 text-gray-600 text-sm">
             <li>Gold & Foil</li>
             <li>Pastels</li>
             <li>Bold Colors</li>
@@ -123,47 +122,43 @@ export default function PersonalizedInvitations() {
         </aside>
 
         {/* Main Section */}
-        <main className="md:col-span-3 ">
+        <main className="md:col-span-3">
           {/* Filter Bar */}
-          <div className="bg-white sticky top-54 h-fit">
-          <div className="flex flex-wrap gap-3 mb-8  p-4">
-            {filters.map((filter, idx) => (
-              <button
-                key={idx}
-                onClick={() => setSelectedFilter(filter.name)}
-                className="px-4 py-2 text-sm border rounded-md bg-white hover:bg-gray-50"
-              >
-                {filter.name}
-              </button>
-            ))}
+          <div className="bg-white sticky top-52 ">
+            <div className="flex overflow-x-auto gap-3 mb-8 p-3 scrollbar-hide md:flex-wrap">
+              {filters.map((filter, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedFilter(filter.name)}
+                  className={`flex-shrink-0 px-4 py-2 text-sm border rounded-md transition-all ${
+                    selectedFilter === filter.name
+                      ? "bg-indigo-100 border-indigo-300 text-indigo-700"
+                      : "bg-white hover:bg-gray-50"
+                  }`}
+                >
+                  {filter.name}
+                </button>
+              ))}
+            </div>
           </div>
-             </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {invitations.map((card) => (
               <div
                 key={card.id}
-                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition"
+                className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
               >
                 <img
                   src={card.image}
                   alt={card.title}
-                  width={400}
-                  height={500}
-                  className="w-full h-94 object-cover"
+                  className="w-full h-72 sm:h-80 object-cover"
                 />
-                {/* <div className="p-4">
-                  <h4 className="text-gray-800 font-medium">{card.title}</h4>
-                </div> */}
               </div>
             ))}
-       
           </div>
         </main>
       </div>
-      
     </div>
-    
   );
 }

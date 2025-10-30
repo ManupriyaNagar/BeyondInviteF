@@ -5,7 +5,7 @@ import Image from "next/image";
 const seasons = [
   {
     title: "Summer",
-    image: "https://www.papersource.com/cdn/shop/files/622456044.jpg?v=1750369186&width=800", // replace with actual image path
+    image: "https://www.papersource.com/cdn/shop/files/622456044.jpg?v=1750369186&width=800",
     link: "#",
   },
   {
@@ -27,32 +27,31 @@ const seasons = [
 
 export default function ShopBySeason() {
   return (
-    <section className="py-12 bg-white">
+    <section className="py-10 px-4 bg-white">
       {/* Heading */}
-      <h2 className="text-center text-3xl md:text-4xl font-light italic mb-10">
+      <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-light italic mb-8 sm:mb-12">
         Shop by <span className="font-normal">Season</span>
       </h2>
 
       {/* Cards */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
         {seasons.map((season, index) => (
           <div
             key={index}
-            className="flex flex-col items-center text-center group"
+            className="flex flex-col items-center text-center group w-full"
           >
-            <div className="w-full bg-white border border-gray-200 rounded-md shadow-sm p-4">
+            <div className="w-full overflow-hidden rounded-md border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
               <img
                 src={season.image}
                 alt={season.title}
-                width={400}
-                height={600}
-                className="rounded-md object-cover mx-auto"
+                className="w-full h-56 sm:h-64 md:h-72 lg:h-80 object-cover rounded-md transform group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <h3 className="mt-4 text-xl font-light italic">{season.title}</h3>
+
+            <h3 className="mt-4 text-lg sm:text-xl font-light italic">{season.title}</h3>
             <a
               href={season.link}
-              className="mt-1 text-sm font-medium underline underline-offset-4"
+              className="mt-1 text-sm sm:text-base font-medium underline underline-offset-4 hover:text-gray-600"
             >
               EXPLORE
             </a>
